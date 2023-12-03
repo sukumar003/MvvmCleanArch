@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MvvmCleanArch</string>
+    <string name="no_internet">Please check your internet connection !</string>
+    <string name="something_wrong">Oops! Something went wrong !</string>
+</resources>
