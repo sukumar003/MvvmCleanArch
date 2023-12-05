@@ -1,4 +1,5 @@
 package com.suku.mvvm.cleanarch.util
+
 import android.app.Activity
 import android.content.Context
 import android.util.Log
@@ -8,7 +9,6 @@ import androidx.annotation.DimenRes
 import androidx.annotation.IntegerRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-//import com.suku.mvvm.cleanarch.BuildConfig
 
 fun Activity.logd(message: String) {
     /*if (BuildConfig.DEBUG)*/ Log.d(this::class.java.simpleName, message)

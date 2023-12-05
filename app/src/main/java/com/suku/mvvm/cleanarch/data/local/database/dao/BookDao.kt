@@ -4,26 +4,17 @@ import androidx.room.*
 import com.suku.mvvm.cleanarch.data.local.database.entity.Books
 
 @Dao
-interface BooksDAO {
+interface BookDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insert(books: List<Books>)
+    fun insert(books: List<Books>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insert(books: Books)
+    fun insert(books: Books)
 
     @Query("SELECT COUNT(*) from books")
-     fun booksCounts(): Int
+    fun booksCounts(): Int
 
     @Query("SELECT * FROM books")
-     fun getAllItems(): List<Books>
-
-    @Query("DELETE FROM books")
-     fun deleteAll()
-
-    @Update
-     fun update(books: Books?)
-
-    @Delete
-     fun delete(books: Books?)
+    fun getAllItems(): List<Books>
 }

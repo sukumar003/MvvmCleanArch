@@ -2,36 +2,16 @@ package com.suku.mvvm.cleanarch.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.suku.mvvm.cleanarch.data.local.database.dao.BooksDAO
+import androidx.room.TypeConverters
+import com.suku.mvvm.cleanarch.data.local.database.dao.BookDao
+import com.suku.mvvm.cleanarch.data.local.database.dao.CharacterDao
 import com.suku.mvvm.cleanarch.data.local.database.entity.Books
+import com.suku.mvvm.cleanarch.data.local.database.entity.Characters
+import com.suku.mvvm.cleanarch.util.ArrayListConverter
 
-//@Database(entities = [(Movie::class), (Tv::class), (Person::class)], version = 3, exportSchema = false)
-@Database(entities = [(Books::class)], version = 1, exportSchema = false)
+@Database(entities = [(Books::class), (Characters::class)], version = 1)
+@TypeConverters(ArrayListConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun booksDao(): BooksDAO
-
-    /*companion object {
-        // prevents multiple instances of database opening at the same time.
-        @Volatile
-        private var instance: AppDatabase? = null
-        val DB_NAME="books.db"
-
-        fun getInstance(@ApplicationContext context:Context): AppDatabase? {
-            if (instance == null) {
-                //this mean this code called by one thread at a time
-                synchronized(this) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        AppDatabase::class.java,
-                        "books.db"
-                    ).build()
-                }
-            }
-            return instance
-        }
-
-        fun destroyInstance() {
-            instance = null
-        }
-    }*/
+    abstract fun booksDao(): BookDao
+    abstract fun charsDao(): CharacterDao
 }

@@ -17,13 +17,16 @@
         android:theme="@style/Theme.MvvmCleanArch"
         tools:targetApi="31">
         <activity
-            android:name=".ui.DummyActivity"
-            android:exported="true">
+            android:name=".ui.books.BookActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.MvvmCleanArch.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

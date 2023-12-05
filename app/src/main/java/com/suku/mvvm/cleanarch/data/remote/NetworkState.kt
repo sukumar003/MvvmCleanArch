@@ -6,5 +6,5 @@ sealed class NetworkState<T>(val data: T? = null, val message: String? = null) {
 
     class Failure<T>(message: String?) : NetworkState<T>(null, message)
 
-    class Loading<T>(message: String?=null) : NetworkState<T>(null, message)
+    class Loading<T>(message: String? = null) : NetworkState<T>(null, message)
 }

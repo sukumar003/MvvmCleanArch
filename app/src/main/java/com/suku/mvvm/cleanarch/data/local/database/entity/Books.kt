@@ -8,11 +8,14 @@ import androidx.room.PrimaryKey
 @Entity
 data class Books(
     @PrimaryKey(autoGenerate = true)
-    val booksId: Int,
+    val booksId: Long,
 
     @ColumnInfo
     val bookName: String,
 
     @ColumnInfo
-    val bookUrl: String
+    val bookUrl: String,
+
+    @ColumnInfo
+    val charsUrl: ArrayList<String>
 )
