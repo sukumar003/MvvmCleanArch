@@ -3,17 +3,9 @@ package com.suku.mvvm.cleanarch.data.local.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(
-    foreignKeys = [ForeignKey(
-        entity = Books::class,
-        parentColumns = arrayOf("booksId"),
-        childColumns = arrayOf("bookCharId"),
-        onDelete = ForeignKey.CASCADE
-    )]
-)
+@Entity
 data class Characters(
     @PrimaryKey(autoGenerate = true)
     val charId: Long,
@@ -31,8 +23,5 @@ data class Characters(
     val titles: ArrayList<String>,
 
     @ColumnInfo
-    val alias: ArrayList<String>,
-
-    @ColumnInfo
-    val bookCharId: Long
+    val alias: ArrayList<String>
 )

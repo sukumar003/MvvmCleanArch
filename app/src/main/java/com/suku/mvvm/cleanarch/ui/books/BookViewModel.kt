@@ -8,6 +8,7 @@ import com.suku.mvvm.cleanarch.data.local.database.entity.Characters
 import com.suku.mvvm.cleanarch.data.remote.NetworkState
 import com.suku.mvvm.cleanarch.data.repository.BooksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,12 +26,16 @@ class BookViewModel @Inject constructor(private val repository: BooksRepository)
         }
     }
 
-    fun callCharactersApi(book: Books) {
-        viewModelScope.launch {
-            liveDataChars.postValue(NetworkState.Loading())
-            val result = repository.callCharApi(book)
-            liveDataChars.postValue(result)
-        }
-
+    suspend fun callCharacterApi(charsUrl: List<String>) {
+        liveDataChars.postValue(NetworkState.Loading())
+        val tempCharList = ArrayList<Characters>()
+        viewModelScope.async {
+            charsUrl.forEach {
+                val response = repository.getCharacter(it)
+                if (response.data != null)
+                    tempCharList.add(response.data)
+            }
+        }.await()
+        liveDataChars.postValue(NetworkState.Success(tempCharList))
     }
 }

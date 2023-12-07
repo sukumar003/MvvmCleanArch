@@ -14,7 +14,7 @@ class BookViewHolder(itemView: View, private val callback: ICallBackBook) :
     override fun populateData() {
         book.text = data?.bookName
         itemView.setOnClickListener {
-            callback.onClickItem(adapterPosition, data!!)
+            callback.onClickItem(data!!)
         }
     }
 }

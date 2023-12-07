@@ -11,6 +11,7 @@ class LocalDataSource @Inject constructor(
     private val characterDao: CharacterDao
 ) {
 
+    // books
     fun getAllBooks(): List<Books> {
         return bookDao.getAllItems()
     }
@@ -23,19 +24,16 @@ class LocalDataSource @Inject constructor(
         bookDao.insert(books)
     }
 
-    fun insertChars(characters: Characters) {
+    // characters
+    fun insertCharacter(characters: Characters) {
         characterDao.insert(characters)
     }
 
-    fun getCharUrl(bookId: Long): List<String> {
-        return characterDao.getCharsUrl(bookId)
+    fun charUrlExists(url: String): Boolean {
+        return characterDao.charUrlExists(url)
     }
 
-    fun getAllChars(bookId: Long): List<Characters> {
-        return characterDao.getAllItems(bookId)
-    }
-
-    fun getCharList(bookId: Long, offSet: Int): List<Characters> {
-        return characterDao.getCharList(bookId, offSet)
+    fun getCharacter(url: String): Characters {
+        return characterDao.getCharacterData(url)
     }
 }

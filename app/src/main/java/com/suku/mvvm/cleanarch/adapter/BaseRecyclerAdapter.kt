@@ -45,13 +45,6 @@ abstract class BaseRecyclerAdapter<T, V : BaseViewHolder<T>> : RecyclerView.Adap
         notifyItemRemoved(position)
     }
 
-    fun resetItems(data: MutableList<T>?) {
-        if (data != null) {
-            this.data = data
-            notifyDataSetChanged()
-        }
-    }
-
     fun addItems(data: MutableList<T>?) {
         if (data != null) {
             val startRange = if (data.size - 1 > 0)

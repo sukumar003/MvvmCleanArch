@@ -10,12 +10,11 @@ data class CharacterResponse(
     val aliases: ArrayList<String>
 )
 
-fun CharacterResponse.toCharacter(id: Long) = Characters(
+fun CharacterResponse.toCharacter() = Characters(
     charId = 0,
     charUrl = url,
     charName = name,
     charGender = gender,
     titles = titles,
-    alias = aliases,
-    bookCharId = id
+    alias = aliases
 )

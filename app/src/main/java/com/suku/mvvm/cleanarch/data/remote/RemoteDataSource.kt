@@ -2,7 +2,6 @@ package com.suku.mvvm.cleanarch.data.remote
 
 import com.suku.mvvm.cleanarch.data.dto.BooksResponse
 import com.suku.mvvm.cleanarch.data.dto.CharacterResponse
-
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) : NetworkRequest() {
@@ -13,7 +12,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) :
         })
     }
 
-    suspend fun getCharsList(url: String): NetworkState<CharacterResponse> {
+    suspend fun getCharacterDetails(url: String): NetworkState<CharacterResponse> {
         return invokeApiRequest(apiCall = {
             apiService.getCharList(url)
         })
